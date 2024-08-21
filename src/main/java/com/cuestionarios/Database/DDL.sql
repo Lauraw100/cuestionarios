@@ -15,7 +15,7 @@ CREATE TABLE roles (
     nombre VARCHAR(255),
     CONSTRAINT pk_roles PRIMARY KEY (id)
 );
-
+y
 CREATE TABLE usuarios_roles (
     id_rol INT,
     id_usuario INT,
@@ -46,7 +46,7 @@ CREATE TABLE capitulos (
     id_encuesta INT,
     creado_en TIMESTAMP,
     actualizado_en TIMESTAMP,
-    numero_capitulo VARCHAR(50) NOT NULL AUTO_INCREMENT,
+    numero_capitulo VARCHAR(50) NOT NULL,
     titulo_capitulo VARCHAR(50),
     CONSTRAINT pk_capitulos PRIMARY KEY (id),
     CONSTRAINT fk_capitulos_encuesta FOREIGN KEY (id_encuesta) REFERENCES encuestas(id)
@@ -57,7 +57,7 @@ CREATE TABLE preguntas (
     id_capitulo INT,
     creado_en TIMESTAMP,
     actualizado_en TIMESTAMP,
-    numero_pregunta VARCHAR(10) NOT NULL AUTO_INCREMENT,
+    numero_pregunta VARCHAR(10) NOT NULL,
     tipo_respuesta VARCHAR(20),
     comentario_pregunta VARCHAR(255),
     texto_pregunta TEXT,
@@ -84,7 +84,7 @@ CREATE TABLE opciones_respuesta (
 
 CREATE TABLE subopciones_respuesta (
     id INT AUTO_INCREMENT,
-    numero_subopcion INT NOT NULL AUTO_INCREMENT,
+    numero_subopcion INT NOT NULL,
     creado_en TIMESTAMP,
     actualizado_en TIMESTAMP,
     id_opcion_respuesta INT,
