@@ -1,13 +1,14 @@
-package com.cuestionarios.Login.infrastructure.repository;
+package com.cuestionarios.login.infrastructure.repository;
 
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Optional;
-import com.cuestionarios.Database.Database;
-import com.cuestionarios.Login.domain.entity.Login;
-import com.cuestionarios.Login.domain.service.LoginService;
+
+import com.cuestionarios.database.Database;
+import com.cuestionarios.login.domain.entity.Login;
+import com.cuestionarios.login.domain.service.LoginService;
 
 public class LoginRepository implements LoginService{
 

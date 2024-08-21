@@ -1,7 +1,8 @@
-package com.cuestionarios.Login.domain.service;
+package com.cuestionarios.login.domain.service;
 
 import java.util.Optional;
-import com.cuestionarios.Login.domain.entity.Login;
+
+import com.cuestionarios.login.domain.entity.Login;
 
 public interface LoginService {
     public Optional<Integer> validarusuario(String user, String contraseña);

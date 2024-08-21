@@ -1,6 +1,6 @@
-package com.cuestionarios.Capitulos.application;
+package com.cuestionarios.capitulos.application;
 
-import com.cuestionarios.Capitulos.domain.service.CapituloService;
+import com.cuestionarios.capitulos.domain.service.CapituloService;
 
 public class DeleteCapituloUC {
 

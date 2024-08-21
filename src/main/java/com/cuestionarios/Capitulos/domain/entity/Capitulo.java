@@ -1,4 +1,4 @@
-package com.cuestionarios.Capitulos.domain.entity;
+package com.cuestionarios.capitulos.domain.entity;
 
 import java.sql.Timestamp;
 

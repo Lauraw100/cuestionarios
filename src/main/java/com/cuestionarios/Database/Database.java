@@ -1,4 +1,4 @@
-package com.cuestionarios.Database;
+package com.cuestionarios.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

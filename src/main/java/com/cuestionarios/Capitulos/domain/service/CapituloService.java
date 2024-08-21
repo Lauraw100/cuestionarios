@@ -1,8 +1,9 @@
-package com.cuestionarios.Capitulos.domain.service;
+package com.cuestionarios.capitulos.domain.service;
 
 import java.util.List;
 import java.util.Optional;
-import com.cuestionarios.Capitulos.domain.entity.Capitulo;
+
+import com.cuestionarios.capitulos.domain.entity.Capitulo;
 
 public interface CapituloService {
 

@@ -42,7 +42,6 @@ public class Validaciones {
     return Optional.empty();
     }
 
-
     public static int elegiropcion(String seleccion) {
         
         int opcion = 0;

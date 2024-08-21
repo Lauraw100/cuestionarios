@@ -1,4 +1,4 @@
-package com.cuestionarios.Login.domain.entity;
+package com.cuestionarios.login.domain.entity;
 
 public class Login {
     private String password;

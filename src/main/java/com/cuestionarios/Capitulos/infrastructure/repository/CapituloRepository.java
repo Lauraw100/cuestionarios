@@ -1,4 +1,4 @@
-package com.cuestionarios.Capitulos.infrastructure.repository;
+package com.cuestionarios.capitulos.infrastructure.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.swing.JOptionPane;
-import com.cuestionarios.Database.Database;
-import com.cuestionarios.Capitulos.domain.entity.Capitulo;
-import com.cuestionarios.Capitulos.domain.service.CapituloService;
+
+import com.cuestionarios.capitulos.domain.entity.Capitulo;
+import com.cuestionarios.capitulos.domain.service.CapituloService;
+import com.cuestionarios.database.Database;
 
 public class CapituloRepository implements CapituloService{
 

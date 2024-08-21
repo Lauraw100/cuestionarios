@@ -1,4 +1,4 @@
-package com.cuestionarios.Capitulos.infrastructure.controller;
+package com.cuestionarios.capitulos.infrastructure.controller;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -6,14 +6,15 @@ import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import com.cuestionarios.Capitulos.application.CreateCapituloUC;
-import com.cuestionarios.Capitulos.application.DeleteCapituloUC;
-import com.cuestionarios.Capitulos.application.FindAllCapituloUC;
-import com.cuestionarios.Capitulos.application.FindByidCapituloUC;
-import com.cuestionarios.Capitulos.application.UpdateCapituloUC;
-import com.cuestionarios.Capitulos.domain.entity.Capitulo;
-import com.cuestionarios.Capitulos.domain.service.CapituloService;
-import com.cuestionarios.Capitulos.infrastructure.repository.CapituloRepository;
+
+import com.cuestionarios.capitulos.application.CreateCapituloUC;
+import com.cuestionarios.capitulos.application.DeleteCapituloUC;
+import com.cuestionarios.capitulos.application.FindAllCapituloUC;
+import com.cuestionarios.capitulos.application.FindByidCapituloUC;
+import com.cuestionarios.capitulos.application.UpdateCapituloUC;
+import com.cuestionarios.capitulos.domain.entity.Capitulo;
+import com.cuestionarios.capitulos.domain.service.CapituloService;
+import com.cuestionarios.capitulos.infrastructure.repository.CapituloRepository;
 import com.cuestionarios.funciones.Validaciones;
 
 public class ConsoleAdapterCapitulo {
