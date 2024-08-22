@@ -46,7 +46,7 @@ public class ConsoleAdapterGenerarCuestionarios {
         }
         try {
             int num = Integer.parseInt(JOptionPane.showInputDialog(null,sb));
-            // el numero es el id del cuestionario
+            // num = id del cuestionario
 
             List<GenerarCuestionarios> capitulos = mostrarCap.execute(num);
             //muestra los capitulos relacionados a la encuesta
