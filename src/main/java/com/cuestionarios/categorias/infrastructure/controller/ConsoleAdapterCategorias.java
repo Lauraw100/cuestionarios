@@ -21,20 +21,20 @@ import com.cuestionarios.funciones.Validaciones;
 public class ConsoleAdapterCategorias {
 
     private CategoriasService categoriasService;
-    private CreateCategoriasUC createCategorias;
-    private DeleteCategoriasUC delCategorias;
-    private FindAllCategoriasUC allCategorias;
-    private FindByidCategoriasUC idCategorias;
-    private UpdateCategoriasUC updCategorias;
+    private CreateCategoriasUC createCat;
+    private DeleteCategoriasUC delCat;
+    private FindAllCategoriasUC allCat;
+    private FindByidCategoriasUC idCat;
+    private UpdateCategoriasUC updCat;
 
     
     public ConsoleAdapterCategorias() {
         this.categoriasService = new CategoriasRepository();
-        this.createCategorias = new CreateCategoriasUC(categoriasService);
-        this.delCategorias = new DeleteCategoriasUC(categoriasService);
-        this.allCategorias = new FindAllCategoriasUC(categoriasService);
-        this.idCategorias = new FindByidCategoriasUC(categoriasService);
-        this.updCategorias = new UpdateCategoriasUC(categoriasService);
+        this.createCat = new CreateCategoriasUC(categoriasService);
+        this.delCat = new DeleteCategoriasUC(categoriasService);
+        this.allCat = new FindAllCategoriasUC(categoriasService);
+        this.idCat = new FindByidCategoriasUC(categoriasService);
+        this.updCat = new UpdateCategoriasUC(categoriasService);
     }
 
     public void Start(){
@@ -60,7 +60,7 @@ public class ConsoleAdapterCategorias {
                 String nombre = JOptionPane.showInputDialog(null, "Escriba el nombre de la Categoria: ");
 
                 Categorias CategoriasCatalogo = new Categorias(nombre);
-                createCategorias.execute(CategoriasCatalogo);
+                createCat.execute(CategoriasCatalogo);
                 Start();
 
 
@@ -69,7 +69,7 @@ public class ConsoleAdapterCategorias {
                 try {
                     String iddel = JOptionPane.showInputDialog(null, "Escriba el id de la Categoria para eliminar: ");
                     int iddelete = Integer.parseInt(iddel);
-                    delCategorias.execute(iddelete);
+                    delCat.execute(iddelete);
                     Start();
                     
                 } catch (Exception e) {
@@ -81,7 +81,7 @@ public class ConsoleAdapterCategorias {
             case 3:
 
                 StringBuilder mensaje = new StringBuilder("Lista de CategoriasCatalogos:\n");
-                List<Categorias> CategoriasCatalogos = allCategorias.execute();
+                List<Categorias> CategoriasCatalogos = allCat.execute();
                 for (Categorias categoriasCatalogo : CategoriasCatalogos) {
 
                     int id = categoriasCatalogo.getId();
@@ -111,7 +111,7 @@ public class ConsoleAdapterCategorias {
                 try {
                     String iduser = JOptionPane.showInputDialog(null, "Escriba el id de la Categoria para buscar: ");
                     int iduserbu = Integer.parseInt(iduser);
-                    Optional<Categorias> dato = idCategorias.execute(iduserbu);
+                    Optional<Categorias> dato = idCat.execute(iduserbu);
                     StringBuilder mensajeid = new StringBuilder("CategoriasCatalogos:\n");
                     if (dato.isPresent()) {
                         Categorias datopre = dato.get();
@@ -140,10 +140,10 @@ public class ConsoleAdapterCategorias {
             try {
                 String idbyuser = JOptionPane.showInputDialog(null, "Escriba el id de la Categoria para buscar: ");
                 int iduserupd = Integer.parseInt(idbyuser);
-                Optional<Categorias> dato = idCategorias.execute(iduserupd);
-                Categorias CategoriasCatalogoUpd = dato.get();
+                Optional<Categorias> dato = idCat.execute(iduserupd);
+                Categorias CategoriasCatalogoUpd= dato.get();
                 CategoriasCatalogoUpd.setNombre(JOptionPane.showInputDialog(null," Ingrese el nuevo nombre: "));
-                updCategorias.execute(CategoriasCatalogoUpd);     
+                updCat.execute(CategoriasCatalogoUpd);     
                 Start();
                 
             } catch (Exception e) {
