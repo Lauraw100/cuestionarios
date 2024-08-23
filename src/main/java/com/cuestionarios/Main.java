@@ -15,6 +15,9 @@ import com.cuestionarios.database.Database;
 import com.cuestionarios.capitulos.infrastructure.controller.ConsoleAdapterCapitulo;
 import com.cuestionarios.categorias.infrastructure.controller.ConsoleAdapterCategorias;
 import com.cuestionarios.generarCuestionarios.infrastructure.controller.ConsoleAdapterGenerarCuestionarios;
+import com.cuestionarios.login.infrastructure.controller.ConsoleAdapterLogin;
+import com.cuestionarios.preguntas.infrastructure.controller.ConsoleAdapterPreguntas;
+import com.cuestionarios.respuesta.infrastructure.controller.ConsoleAdapterRespuesta;
 import com.cuestionarios.rol.infrastructure.controller.ConsoleAdapterRoles;
 import com.cuestionarios.rolusuario.infrastructure.controller.ConsoleAdapterUsuarioRol;
 import com.cuestionarios.subopcionesRespuesta.infrastructure.controller.ConsoleAdapterSubOpcionesRespuesta;
@@ -23,6 +26,8 @@ import com.cuestionarios.usuarios.infrastructure.controller.ConsoleAdapterUsuari
 public class Main {
     public static void main(String[] args) {
         
+        ConsoleAdapterLogin lg = new ConsoleAdapterLogin();
+        lg.Start();
         ConsoleAdapterUsuario cs = new ConsoleAdapterUsuario();
         cs.Start();
 
@@ -32,26 +37,26 @@ public class Main {
         ConsoleAdapterRoles car = new ConsoleAdapterRoles();
         car.Start();
 
-        ConsoleAdapterSubOpcionesRespuesta casor = new ConsoleAdapterSubOpcionesRespuesta();
-        casor.Start();
+        ConsoleAdapterSubOpcionesRespuesta casr = new ConsoleAdapterSubOpcionesRespuesta();
+        casr.Start();
 
-        // ConsoleAdapterRespuesta menuRespuesta = new ConsoleAdapterRespuesta();
-        // menuRespuesta.Start();
+        ConsoleAdapterRespuesta menuR = new ConsoleAdapterRespuesta();
+        menuR.Start();
 
-        //ConsoleAdapterPregunta menuPregunta = new ConsoleAdapterPregunta();
-        //menuPregunta.Start();
+        ConsoleAdapterPreguntas menuPre = new ConsoleAdapterPreguntas();
+        menuPre.Start();
 
         // ConsoleAdapterOpcionesRespuesta menuOpcionesRespuesta = new ConsoleAdapterOpcionesRespuesta();
         // menuOpcionesRespuesta.Start();
 
-        ConsoleAdapterEncuesta menuEncuesta = new ConsoleAdapterEncuesta();
-        menuEncuesta.Start();
+        ConsoleAdapterEncuesta menuEncu = new ConsoleAdapterEncuesta();
+        menuEncu.Start();
 
-        ConsoleAdapterCategorias menuCatalogo = new ConsoleAdapterCategorias();
-        menuCatalogo.Start();
+        ConsoleAdapterCategorias menuCatal = new ConsoleAdapterCategorias();
+        menuCatal.Start();
 
-        ConsoleAdapterCapitulo menuCapitulo = new ConsoleAdapterCapitulo();
-        menuCapitulo.Start();
+        ConsoleAdapterCapitulo menuCap = new ConsoleAdapterCapitulo();
+        menuCap.Start();
 
         ConsoleAdapterGenerarCuestionarios encuesta = new ConsoleAdapterGenerarCuestionarios();
         encuesta.Start();
