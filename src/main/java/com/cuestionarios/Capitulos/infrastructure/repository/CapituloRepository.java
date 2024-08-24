@@ -24,7 +24,7 @@ public class CapituloRepository implements CapituloService{
             ps.setString(2, capitulo.getTituloCapitulo());
 
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null,  "Capitulos agregados con exito");
+            JOptionPane.showMessageDialog(null,  "Capitulos agregado con exito");
 
             
         } catch (Exception e) {
@@ -60,6 +60,34 @@ public class CapituloRepository implements CapituloService{
     }
 
     @Override
+    public Optional<Capitulo> FindByIdCapitulo(int id) {
+        String sql = "SELECT id ,id_encuesta, creado_en, actualizado_en, numero_capitulo, titulo_capitulo FROM Capitulos WHERE id = ?";
+        try (Connection con = Database.getConnection();
+        PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int ID = rs.getInt("id");
+                int id_Capitulo = rs.getInt("id_encuesta");
+                Timestamp creado_en = rs.getTimestamp("creado_en"); 
+                Timestamp actualizado_en = rs.getTimestamp("actualizado_en"); 
+                String numero_capitulo = rs.getString("numero_capitulo");
+                String titulo_capitulo = rs.getString("titulo_capitulo");
+
+
+                Capitulo rsp = new Capitulo( ID, id_Capitulo, creado_en, actualizado_en, numero_capitulo, titulo_capitulo);
+                return Optional.of(rsp);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return Optional.empty();
+    }
+
+    @Override
     public void deleteCapitulo(int id) {
         String sql = "DELETE FROM Capitulos WHERE id = ?";
         try (Connection con = Database.getConnection();
@@ -90,34 +118,6 @@ public class CapituloRepository implements CapituloService{
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public Optional<Capitulo> FindByIdCapitulo(int id) {
-        String sql = "SELECT id ,id_encuesta, creado_en, actualizado_en, numero_capitulo, titulo_capitulo FROM Capitulos WHERE id = ?";
-        try (Connection con = Database.getConnection();
-        PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                int ID = rs.getInt("id");
-                int id_Capitulo = rs.getInt("id_encuesta");
-                Timestamp creado_en = rs.getTimestamp("creado_en"); 
-                Timestamp actualizado_en = rs.getTimestamp("actualizado_en"); 
-                String numero_capitulo = rs.getString("numero_capitulo");
-                String titulo_capitulo = rs.getString("titulo_capitulo");
-
-
-                Capitulo rsp = new Capitulo( ID, id_Capitulo, creado_en, actualizado_en, numero_capitulo, titulo_capitulo);
-                return Optional.of(rsp);
-            }
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-        return Optional.empty();
     }
 
 }

@@ -19,7 +19,7 @@ public class Capitulo {
 
 
     public Capitulo(int id, int idEncuesta, Timestamp creadoEn, Timestamp actualizadoEn, String numeroCapitulo,
-            String tituloCapitulo) {
+        String tituloCapitulo) {
         this.id = id;
         this.idEncuesta = idEncuesta;
         this.creadoEn = creadoEn;

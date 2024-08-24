@@ -212,10 +212,12 @@ public class ConsoleAdapterSubOpcionesRespuesta {
                                 bandera = false;
                                 break;
                             }
+                        }else {
+                            bandera = false;
                         }
                 } 
                 updSO.execute(datoupd);
-                
+                Start();
                 } catch (Exception e) {
                     e.printStackTrace();
                     Start();

@@ -106,6 +106,7 @@ public class UsuarioRolRepository implements UsuarioRolService {
             
         } catch (Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null,  "Verifica no tener el mismo usuario 2 veces porque no se permitira hacer la actualizacion");
         }
         
         

@@ -4,6 +4,8 @@ import java.util.Optional;
 
 import javax.swing.JOptionPane;
 
+import com.cuestionarios.generarCuestionarios.infrastructure.controller.ConsoleAdapterGenerarCuestionarios;
+import com.cuestionarios.iu.Menu;
 import com.cuestionarios.login.application.IngresarUsuarioUC;
 import com.cuestionarios.login.application.ObtenerRollUC;
 import com.cuestionarios.login.application.ValidarLoginUC;
@@ -25,21 +27,32 @@ public class ConsoleAdapterLogin {
         this.obtenerRol = new ObtenerRollUC(loginService);
     }
 
+    // reescribir el codigo si el usuario esta habilitado o no
     public void Start(){
-        String user = JOptionPane.showInputDialog(null, "Ingrese el usuario:");
-        String password = JOptionPane.showInputDialog(null, "Ingrese la contraseña:");
-        Optional<Integer> iduser = validar.execute(user, password);
+        String user = JOptionPane.showInputDialog(null, "igrese el usuario");
+        String password = JOptionPane.showInputDialog(null, "ingrese la contraseña");
+        Optional<Login> iduser = validar.execute(user, password);
         if (iduser.isPresent()) {
-            int idusuario = iduser.get();
+            Login usuario = iduser.get();
+            int idusuario = usuario.getIdrol();
+            boolean habilitado = usuario.isIdhabilitado();
             Optional<Integer> idrol = obtenerRol.execute(idusuario);
             if (idrol.isPresent()) {
                 int rol = idrol.get();
-                if (rol == 1 ) {
-                    //see the crud - funtion
+                if (rol == 1  && habilitado == true) {
+                    Menu menuCrud = new Menu();
+                    menuCrud.Start();
                     
-                } else {
-                    // survey funtion
+                } 
+                if (rol != 1 && habilitado == true) {
+                    
+                    ConsoleAdapterGenerarCuestionarios encuesta = new ConsoleAdapterGenerarCuestionarios();
+                    encuesta.Start();
                 }
+                if (habilitado == false) {
+                    JOptionPane.showMessageDialog(null,"Lo siento, no estas Habilitado");
+                    
+                } 
             }
 
         } else {

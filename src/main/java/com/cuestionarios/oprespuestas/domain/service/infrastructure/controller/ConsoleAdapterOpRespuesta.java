@@ -16,7 +16,7 @@ import com.cuestionarios.oprespuestas.domain.entity.OpRespuesta;
 import com.cuestionarios.oprespuestas.domain.service.OpRespuestaService;
 import com.cuestionarios.oprespuestas.domain.service.infrastructure.repository.OpRespuestaRepository;
 
-public class ConsoleAdapterOpRespuestaUC {
+public class ConsoleAdapterOpRespuesta {
 
     private OpRespuestaService opcionesRespuestaService;
     private CreateOpRespuestaUC creatOPR;
@@ -26,7 +26,7 @@ public class ConsoleAdapterOpRespuestaUC {
     private UpdateOpRespuestaUC updOPR;
 
 
-    public ConsoleAdapterOpRespuestaUC() {
+    public ConsoleAdapterOpRespuesta() {
         this.opcionesRespuestaService = new OpRespuestaRepository();
         this.creatOPR = new CreateOpRespuestaUC(opcionesRespuestaService);
         this.delOPR = new DeleteOpRespuestaUC(opcionesRespuestaService);

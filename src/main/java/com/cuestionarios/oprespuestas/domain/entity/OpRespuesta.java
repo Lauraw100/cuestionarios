@@ -28,7 +28,7 @@ public class OpRespuesta {
 
 
     public OpRespuesta(int valorOpcion, int idCategoriaCatalogo, int idPregunta, Timestamp creadoEn,
-            Timestamp actualizadoEn, String tipoComponenteHtml, String comentarioRespuesta, String textoOpcion) {
+        Timestamp actualizadoEn, String tipoComponenteHtml, String comentarioRespuesta, String textoOpcion) {
         this.valorOpcion = valorOpcion;
         this.idCategoriaCatalogo = idCategoriaCatalogo;
         this.idPregunta = idPregunta;
@@ -42,8 +42,8 @@ public class OpRespuesta {
 
 
     public OpRespuesta(int id, int valorOpcion, int idCategoriaCatalogo, int idPregunta, Timestamp creadoEn,
-            Timestamp actualizadoEn, int idOpcionPadre, String tipoComponenteHtml, String comentarioRespuesta,
-            String textoOpcion) {
+        Timestamp actualizadoEn, int idOpcionPadre, String tipoComponenteHtml, String comentarioRespuesta,
+        String textoOpcion) {
         this.id = id;
         this.valorOpcion = valorOpcion;
         this.idCategoriaCatalogo = idCategoriaCatalogo;

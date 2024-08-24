@@ -16,9 +16,9 @@ public class Validaciones {
             
             // Si el usuario presiona "Cancelar" o cierra la ventana
             if (seleccion == null) {
-                int opcionSalir = JOptionPane.showConfirmDialog(null, "¿Deseas salir del programa?", "Salir", JOptionPane.YES_NO_OPTION);
+                int opcionSalir = JOptionPane.showConfirmDialog(null, "¿Desea salir del menu?", "Salir", JOptionPane.YES_NO_OPTION);
                 if (opcionSalir == JOptionPane.YES_OPTION) {
-                    JOptionPane.showMessageDialog(null, "Saliendo del programa...Adios");
+                    JOptionPane.showMessageDialog(null, "Saliendo del menu");
                     break;
                 } else {
                     continue;
@@ -40,33 +40,6 @@ public class Validaciones {
         
     }
     return Optional.empty();
-    }
-
-    public static int elegiropcion(String seleccion) {
-        
-        int opcion = 0;
-        while (true) {
-            // Si el usuario presiona "Cancelar" o cierra la ventana
-            if (seleccion == null) {
-                int opcionSalir = JOptionPane.showConfirmDialog(null, "¿Deseas salir del programa?", "Salir", JOptionPane.YES_NO_OPTION);
-                if (opcionSalir == JOptionPane.YES_OPTION) {
-                    JOptionPane.showMessageDialog(null, "Saliendo del programa");
-                    break;
-                } else {
-                    continue;
-                }
-            }
-        
-        // Verificar si la entrada es un número válido
-        try {
-            opcion = Integer.parseInt(seleccion);
-            return opcion;
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Debe ingresar un número válido");
-        }  
-    }
-    return opcion;
     }
 
 }

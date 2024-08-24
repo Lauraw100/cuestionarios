@@ -5,7 +5,9 @@ import com.cuestionarios.capitulos.infrastructure.controller.ConsoleAdapterCapit
 import com.cuestionarios.categorias.infrastructure.controller.ConsoleAdapterCategorias;
 import com.cuestionarios.encuestas.infrastructure.controller.ConsoleAdapterEncuesta;
 import com.cuestionarios.funciones.Validaciones;
+import com.cuestionarios.oprespuestas.domain.service.infrastructure.controller.ConsoleAdapterOpRespuesta;
 import com.cuestionarios.preguntas.infrastructure.controller.ConsoleAdapterPreguntas;
+import com.cuestionarios.respuesta.infrastructure.controller.ConsoleAdapterRespuesta;
 import com.cuestionarios.rol.infrastructure.controller.ConsoleAdapterRoles;
 import com.cuestionarios.rolusuario.infrastructure.controller.ConsoleAdapterUsuarioRol;
 import com.cuestionarios.subopcionesRespuesta.infrastructure.controller.ConsoleAdapterSubOpcionesRespuesta;
@@ -54,8 +56,8 @@ public class Menu {
                 menuSubOpciones.Start();
                 break;
             case 5:
-                //ConsoleAdapterRespuesta menuRespuesta = new ConsoleAdapterRespuesta();
-                //menuRespuesta.Start();
+                ConsoleAdapterRespuesta menuRespuesta = new ConsoleAdapterRespuesta();
+                menuRespuesta.Start();
                 
                 break;
             case 6:
@@ -63,8 +65,8 @@ public class Menu {
                 menuPregunta.Start();
                 break;
             case 7:
-                //ConsoleAdapterOpcionesRespuesta menuOpcionesRespuesta = new ConsoleAdapterOpcionesRespuesta();
-                //menuOpcionesRespuesta.Start();
+                ConsoleAdapterOpRespuesta menuOpcionesRespuesta = new ConsoleAdapterOpRespuesta();
+                menuOpcionesRespuesta.Start();
                 
                 break;
             case 8:
