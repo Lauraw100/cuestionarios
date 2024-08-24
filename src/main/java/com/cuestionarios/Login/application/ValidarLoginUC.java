@@ -2,6 +2,7 @@ package com.cuestionarios.login.application;
 
 import java.util.Optional;
 
+import com.cuestionarios.login.domain.entity.Login;
 import com.cuestionarios.login.domain.service.LoginService;
 
 public class ValidarLoginUC {
@@ -12,7 +13,7 @@ public class ValidarLoginUC {
         this.loginService = loginService;
     }
 
-    public Optional<Integer> execute(String user, String contraseña){
+    public Optional<Login> execute(String user, String contraseña){
         return loginService.validarusuario(user, contraseña);
     }
 }

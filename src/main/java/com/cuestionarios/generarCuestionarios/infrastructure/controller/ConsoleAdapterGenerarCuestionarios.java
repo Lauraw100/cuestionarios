@@ -52,7 +52,7 @@ public class ConsoleAdapterGenerarCuestionarios {
     private ObtenerOpcionidUC IdOpcionGet;
     private ObtenerPreguntaHUC PreguntaHijaGet;
     private ObtenerOpcionByidUC idcase;
-    private RetornarSubOpidvalorUC opcionIdCase;
+    private ObtenerOpcionidUC opcionIdCase;
     private ObtenerSubOpByidUC subopcionByid;
     private ObtenerOpcionByidvalorUC idOpcionValor;
     private RetornarSubOpidUC retornarSubOpcion;
@@ -77,8 +77,8 @@ public class ConsoleAdapterGenerarCuestionarios {
         this.IdOpcionGet = new ObtenerOpcionidUC(generarCuestionariosService);
         this.PreguntaHijaGet = new ObtenerPreguntaHUC(generarCuestionariosService);
         this.idcase = new ObtenerOpcionByidUC(generarCuestionariosService);
-        this.opcionIdCase = new RetornarSubOpidvalorUC(generarCuestionariosService);
-        this.subopcionByid = new RetornarSubOpidvalorUC(generarCuestionariosService);
+        this.opcionIdCase = new ObtenerOpcionidUC(generarCuestionariosService);
+        this.subopcionByid = new ObtenerSubOpByidUC(generarCuestionariosService);
         this.idOpcionValor = new ObtenerOpcionByidvalorUC(generarCuestionariosService);
         this.retornarSubOpcion = new RetornarSubOpidUC(generarCuestionariosService);
         this.retornarSubValor = new RetornarSubOpidvalorUC(generarCuestionariosService);

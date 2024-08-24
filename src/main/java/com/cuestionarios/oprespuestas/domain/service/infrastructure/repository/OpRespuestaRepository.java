@@ -3,6 +3,7 @@ package com.cuestionarios.oprespuestas.domain.service.infrastructure.repository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,28 +16,39 @@ import com.cuestionarios.oprespuestas.domain.service.OpRespuestaService;
 public class OpRespuestaRepository implements OpRespuestaService{
 
     @Override
-    public void CreateOpcionesRespuesta(OpRespuesta opcionesRespuesta) {
-        String sql = "INSERT INTO opciones_respuesta (valor_opcion, id_categoria_catalogo, id_pregunta, creado_en, actualizado_en, id_opcion_padre , tipo_componente_html, comentario_respuesta, texto_opcion) VALUES (?, ?, ?, NOW(), NOW(),?,?,?,?)";
-        try (Connection con = Database.getConnection();
-        PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, opcionesRespuesta.getValorOpcion());
-            ps.setInt(2, opcionesRespuesta.getIdCategoriaCatalogo());
-            ps.setInt(3, opcionesRespuesta.getIdPregunta());
-            ps.setInt(4, opcionesRespuesta.getIdOpcionPadre());
-            ps.setString(5, opcionesRespuesta.getTipoComponenteHtml());
-            ps.setString(6, opcionesRespuesta.getComentarioRespuesta());
-            ps.setString(7, opcionesRespuesta.getTextoOpcion());
-
-
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null,  "OpcionesRespuesta agregado con exito");
-
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+public void CreateOpcionesRespuesta(OpRespuesta opcionesRespuesta) {
+    String sql = "CALL validarvaloropcion(?,?,?,?,?,?)";
+    try (Connection con = Database.getConnection();
+         PreparedStatement ps = con.prepareStatement(sql)) {
         
+        ps.setInt(1, opcionesRespuesta.getIdPregunta());
+        ps.setInt(2, opcionesRespuesta.getIdCategoriaCatalogo());
+        
+        // Manejo del valor nulo para IdOpcionPadre
+        if (opcionesRespuesta.getIdOpcionPadre() != null) {
+            ps.setInt(3, opcionesRespuesta.getIdOpcionPadre());
+        } else {
+            ps.setNull(3, java.sql.Types.INTEGER);
+        }
+
+        ps.setString(4, opcionesRespuesta.getTipoComponenteHtml());
+        ps.setString(5, opcionesRespuesta.getComentarioRespuesta());
+        ps.setString(6, opcionesRespuesta.getTextoOpcion());
+
+        ps.executeUpdate();
+        JOptionPane.showMessageDialog(null,  "OpcionesRespuesta agregado con éxito");
+
+    } catch (SQLException e) {
+        // Manejo específico de SQLException
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error al agregar OpcionesRespuesta: " + e.getMessage());
+    } catch (Exception e) {
+        // Manejo de otras excepciones
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage());
     }
+}
+
 
     @Override
     public List<OpRespuesta> FindAllOpcionesRespuesta() {
@@ -120,17 +132,22 @@ public class OpRespuestaRepository implements OpRespuestaService{
 
     @Override
     public void updateOpcionesRespuesta(OpRespuesta opcionesRespuesta) {
-        String sql = "UPDATE opciones_respuesta SET valor_opcion = ?, id_categoria_catalogo = ?, id_pregunta = ?, actualizado_en = NOW(), id_opcion_padre = ? , tipo_componente_html = ?, comentario_respuesta = ?, texto_opcion = ?  WHERE id = ?";
+        String sql = "CALL actualizaropciones(?,?,?,?,?,?,?)";
         try (Connection con = Database.getConnection();
         PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, opcionesRespuesta.getValorOpcion());
-            ps.setInt(2, opcionesRespuesta.getIdCategoriaCatalogo());
-            ps.setInt(3, opcionesRespuesta.getIdPregunta());
-            ps.setInt(4, opcionesRespuesta.getIdOpcionPadre());
+            ps.setInt(1, opcionesRespuesta.getId());
+            ps.setInt(2, opcionesRespuesta.getIdPregunta());
+            ps.setInt(3, opcionesRespuesta.getIdCategoriaCatalogo());
+            System.out.println(opcionesRespuesta.getIdOpcionPadre());
+            if (opcionesRespuesta.getIdOpcionPadre() == 0) {
+
+                ps.setNull(4, java.sql.Types.INTEGER);
+            } else {
+                ps.setInt(4, opcionesRespuesta.getIdOpcionPadre());
+            }
             ps.setString(5, opcionesRespuesta.getTipoComponenteHtml());
             ps.setString(6, opcionesRespuesta.getComentarioRespuesta());
             ps.setString(7, opcionesRespuesta.getTextoOpcion());
-            ps.setInt(8, opcionesRespuesta.getId());
 
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null,  "opcionesRespuesta actualizado con exito");
@@ -140,4 +157,5 @@ public class OpRespuestaRepository implements OpRespuestaService{
         }
         
     }
+
 }

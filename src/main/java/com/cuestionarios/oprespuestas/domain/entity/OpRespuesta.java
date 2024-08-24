@@ -164,7 +164,7 @@ public class OpRespuesta {
 
 
 
-    public int getIdOpcionPadre() {
+    public Integer getIdOpcionPadre() {
         return idOpcionPadre;
     }
 

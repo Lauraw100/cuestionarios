@@ -20,6 +20,9 @@ public class ConsoleAdapterLogin {
     private ValidarLoginUC validar;
     private ObtenerRollUC obtenerRol;
 
+    
+
+
     public ConsoleAdapterLogin() {
         this.loginService = new LoginRepository();
         this.ingresar = new IngresarUsuarioUC(loginService);
@@ -56,12 +59,13 @@ public class ConsoleAdapterLogin {
             }
 
         } else {
-            int response = JOptionPane.showConfirmDialog(null, "¿Desea agregar este nuevo usuario?", "Confirmar", JOptionPane.OK_CANCEL_OPTION);
+            int response = JOptionPane.showConfirmDialog(null, "¿Deseas agregar ese nuevo usuario?", "Confirmar", JOptionPane.OK_CANCEL_OPTION);
             if (response == JOptionPane.OK_OPTION) {
                 Login login = new Login(password, user);
                 ingresar.execute(login);
+                Start();
             } else if (response == JOptionPane.CANCEL_OPTION) {
-                JOptionPane.showMessageDialog(null, "Cerrando ---");
+                JOptionPane.showMessageDialog(null, "saliendo del programa...");
             }
             
         }

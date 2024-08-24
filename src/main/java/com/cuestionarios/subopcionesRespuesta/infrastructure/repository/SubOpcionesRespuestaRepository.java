@@ -15,15 +15,14 @@ import com.cuestionarios.subopcionesRespuesta.domain.service.SubOpcionesRespuest
 
 public class SubOpcionesRespuestaRepository implements SubOpcionesRespuestaService{
 
-     @Override
+    @Override
     public void CreateSubOpcionesRespuesta(SubOpcionesRespuesta subOpcionesRespuesta) {
-        String sql = "INSERT INTO subopciones_respuesta (numero_Subopcion, creado_en,  actualizado_en, id_opcion_respuesta, componente_html, texto_Subopcion) VALUES (?,NOW(),NOW(),?,?,?)";
+        String sql = "CALL validarvalorsubopciones(?,?,?)";
         try (Connection con = Database.getConnection();
         PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, subOpcionesRespuesta.getNumeroSubopcion());
-            ps.setInt(2, subOpcionesRespuesta.getIdOpcionRespuesta());
-            ps.setString(3, subOpcionesRespuesta.getComponenteHtml());
-            ps.setString(4, subOpcionesRespuesta.getTextoSubopcion());
+            ps.setInt(1, subOpcionesRespuesta.getIdOpcionRespuesta());
+            ps.setString(2, subOpcionesRespuesta.getComponenteHtml());
+            ps.setString(3, subOpcionesRespuesta.getTextoSubopcion());
 
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null,  "sub opcion agregado con exito");
@@ -104,20 +103,20 @@ public class SubOpcionesRespuestaRepository implements SubOpcionesRespuestaServi
 
     @Override
     public void updateSubOpcionesRespuesta(SubOpcionesRespuesta subOpcionesRespuesta) {
-        String sql = "UPDATE subopciones_respuesta SET numero_Subopcion = ?, actualizado_en = NOW(), id_opcion_respuesta = ?, componente_html = ?, texto_Subopcion = ? WHERE id = ?";
+        String sql = "CALL actualizarSubopciones(?,?,?,?)";
         try (Connection con = Database.getConnection();
             PreparedStatement ps = con.prepareStatement(sql)) {
-                ps.setInt(1, subOpcionesRespuesta.getNumeroSubopcion());
+                ps.setInt(1, subOpcionesRespuesta.getId());
                 ps.setInt(2, subOpcionesRespuesta.getIdOpcionRespuesta());
                 ps.setString(3, subOpcionesRespuesta.getComponenteHtml());
                 ps.setString(4, subOpcionesRespuesta.getTextoSubopcion());
-                ps.setInt(5, subOpcionesRespuesta.getId());
 
                 ps.executeUpdate();
-            JOptionPane.showMessageDialog(null,  "subopcion actualizada con exito");
+            JOptionPane.showMessageDialog(null,  "sub opcion actualizado con exito");
             
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }

@@ -51,7 +51,6 @@ public class ConsoleAdapterRespuesta {
         ejecutarOpcion(numero);
     } 
 
-  
     }
     public void ejecutarOpcion(int opcion) {
         switch (opcion) {

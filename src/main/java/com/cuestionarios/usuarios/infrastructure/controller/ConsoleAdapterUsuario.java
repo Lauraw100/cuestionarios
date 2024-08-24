@@ -92,7 +92,7 @@ public class ConsoleAdapterUsuario {
      
                 }
                 JTextArea textArea = new JTextArea(mensaje.toString());
-                textArea.setEditable(false); // Para que el texto no sea editable
+                textArea.setEditable(false); // text no sea editable
                 textArea.setCaretPosition(1); // Para que comience en la parte superior
 
                 // Crear un JScrollPane y envolver el JTextArea
